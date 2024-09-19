@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block page_title %}Titre par défaut{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}">
+</head>
+<body>
+<header>
+    <div id="titre" class="center">
+        <a href="{{ path('feed') }}"><span>The Feed</span></a>
+        <nav>
+                <a href="{{ path('feed') }}">Accueil</a>
+                {% if is_granted('ROLE_USER') %}
+                    <a href="{{ path('page_perso', {'login': app.user.login}) }}">Ma page</a>
+                        <form method="post" action="{{ path('app_logout') }}">
+                            <button type="submit">Déconnexion</button>
+                        </form>
+                {% else %}
+                    <a href="{{ path('connexion') }}">Connexion</a>
+                    <a href="{{ path('inscription') }}">Inscription</a>
+                {% endif %}
+        </nav>
+
+    </div>
+</header>
+
+<!-- Section pour afficher les messages flash -->
+<div id="flashes-container">
+    {% for flashMsg in app.flashes('success') %}
+        <span class="flashes flashes-success">{{ flashMsg }}</span>
+    {% endfor %}
+    {% for flashMsg in app.flashes('error') %}
+        <span class="flashes flashes-error">{{ flashMsg }}</span>
+    {% endfor %}
+</div>
+
+<!-- Bloc principal pour le contenu des pages -->
+<main>
+    {% block page_content %}
+        <!-- Contenu par défaut -->
+    {% endblock %}
+</main>
+
+<footer>
+    <!-- Footer commun -->
+</footer>
+</body>
+</html>

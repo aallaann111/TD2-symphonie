@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Demo 3</title>
+</head>
+<body>
+<ul>
+    {% for item in listeCourses %}
+        {% if item == "Livre sur Symfony" %}
+            <li><strong>{{ item }}</strong></li>
+        {% else %}
+            <li>{{ item }}</li>
+        {% endif %}
+    {% endfor %}
+</ul>
+</body>
+</html>

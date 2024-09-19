@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block page_title %}The Feed{% endblock %}
+
+{% block page_content %}
+    {% if is_granted('ROLE_USER') %}
+        <div id="feed">
+            {{ form_start(form, {'attr': {'class': 'center basic-form'}}) }}
+            <fieldset>
+                <legend>Nouveau feedy</legend>
+                <div>
+                    {{ form_widget(form.message, {'attr': {'placeholder': "Qu'avez-vous en tête?"}}) }}
+                </div>
+                <div>
+                    {{ form_widget(form.publier, {'id': "feedy-new-submit", 'label' : "Feeder!"}) }}
+                </div>
+            </fieldset>
+            {{ form_rest(form) }}
+            {{ form_end(form) }}
+        </div>
+    {% else %}
+        <p>Connectez-vous pour créer une publication.</p>
+    {% endif %}
+
+    <div id="feed">
+        <!-- Boucle pour afficher les publications -->
+        {% for publication in publications %}
+            {{ include('publication/publication.html.twig', { 'publication': publication }) }}
+        {% endfor %}
+    </div>
+{% endblock %}

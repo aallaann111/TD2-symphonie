@@ -1,0 +1,15 @@
+<div class="feedy">
+    <div class="feedy-header">
+        <a href="{{ path('page_perso', {'login': publication.auteur.login}) }}">
+            <img class="avatar"
+                 src="{{ publication.auteur.nomPhotoProfil ? asset('img/utilisateurs/uploads/' ~ publication.auteur.nomPhotoProfil) : asset('img/utilisateurs/anonyme.jpg') }}"
+                 alt="avatar de l'utilisateur">
+        </a>
+        <div class="feedy-info">
+            <span>{{ publication.auteur.login }}</span>
+            <span> - </span>
+            <span>{{ publication.datePublication|date('d/m/Y') }}</span>
+            <p>{{ publication.message }}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Demo 2</title>
+</head>
+<body>
+<!-- Affichage des messages flash de type 'success' -->
+{% for flashMsg in app.flashes('success') %}
+    <div class="flash-success">
+        {{ flashMsg }}
+    </div>
+{% endfor %}
+
+<p>Hello {{ nom }}</p>
+</body>
+</html>

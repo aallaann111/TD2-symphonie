@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block page_title %}Inscription{% endblock %}
+
+{% block page_content %}
+    <main>
+        {{ form_start(utilisateurForm, {'attr': {'class': 'center basic-form'}}) }}
+        <fieldset>
+            <legend>Inscription</legend>
+            <div class="access-container">
+                {{ form_label(utilisateurForm.login) }}
+                <p class="help-input-form">Entre 4 et 20 caractères</p>
+                {{ form_widget(utilisateurForm.login) }}
+            </div>
+            <div class="access-container">
+                {{ form_label(utilisateurForm.plainPassword) }}
+                <p class="help-input-form">Entre 8 et 30 caractères, au moins une minuscule, une majuscule et un nombre</p>
+                {{ form_widget(utilisateurForm.plainPassword) }}
+            </div>
+            <div class="access-container">
+                {{ form_label(utilisateurForm.adresseEmail) }}
+                {{ form_widget(utilisateurForm.adresseEmail) }}
+            </div>
+            <div class="access-container">
+                {{ form_label(utilisateurForm.fichierPhotoProfil) }}
+                {{ form_widget(utilisateurForm.fichierPhotoProfil, {'required': '', 'attr': {'accept': 'image/png, image/jpeg'}}) }}
+            </div>
+            {{ form_widget(utilisateurForm.inscription, {'attr': {'class': 'basic-form-submit'}}) }}
+        </fieldset>
+        {{ form_rest(utilisateurForm) }}
+        {{ form_end(utilisateurForm) }}
+    </main>
+{% endblock %}
